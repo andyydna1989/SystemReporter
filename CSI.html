@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+
+            nav{
+                top: 1px;
+                left: -2px;
+                background-color: darkgrey;
+                border-style: solid;
+                position: fixed;
+                width: 100%;
+                font-size: x-large;
+                font-weight: bolder;
+                font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+                padding: 10px 10px;
+                margin: 0px 10px;
+
+            }
+
+            a{
+                margin: 0px 30px;
+                color:rgb(3, 3, 3);
+            }
+            canvas{
+                height: 800px;
+                width: 800px;
+            }
+
+            html{
+                background-color: lightslategrey;
+                font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            }
+
+            h1{
+                margin-top: 75px;
+                background-color: lightgray;
+                border-style:groove;
+                border-radius: 3px;
+                padding:3px;
+            }
+            canvas{
+                background-color: white;
+            }
+
+            p{
+                background-color: rgb(177, 238, 180);
+                border-style:groove;
+                border-radius: 3px;
+                padding:3px;
+                width:fit-content;
+                font-size: larger;
+            }
+
+            span{
+                background-color: lightgray;
+                border-style:groove;
+                border-radius: 3px;
+                padding:3px;
+                width:fit-content;
+                margin-bottom: 15px;
+                font-weight: bold;
+                font-size: small;
+            }
+
+            input{
+                margin-top: 20px;
+            }
+
+            button{
+                width: 80;
+                height: 40;
+                font-size: large;
+                background-color: lightgray;
+                border-radius: 4px;
+                margin:10px;
+                padding: 5px;
+            }
+
+            .float-container {
+             padding: 20px;
+             
+            }
+
+            #panel{
+            float: left;
+            padding: 20px;
+            margin-top: 18px;
+             background-color: white;
+             border-style:groove;
+             box-shadow: 10px;
+            }
+
+            .float-child {
+            float: left;
+            padding: 20px;
+            
+            }  
+
+            #text{
+            float: left;
+            font-size: .8rem;
+            letter-spacing: 1px;
+            padding: 10px;
+            width: 400px;
+            height: 180px;
+            line-height: 1.5;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            
+            
+            
+            }
+        </style>
+    
+    
+        
+    
+<nav>
+<a href="index.html"> |   Radars   | </a>
+<a href="CSI.html"> |   Data Links   | </a>
+<a href="Radios.html"> | Radios | </a>
+
+
+
+</nav>
+        <h1>L16 / L1 Status</h1>
+        <p>Use the sliders to select site serviceability</p>
+        <div class="float-container">
+        
+    <div class="float-child" id="panel">
+        <p>Decode:</p>
+        <span style="background-color: green;"> Green - fully serviceable all networks</span>
+        <span style="background-color:orangered"> Amber - Limitations on network availability</span>
+
+        <p style="margin-top: 30px;">Site State</p>
+    
+        <input type = "range" id="BEServ" value = "3" min="1" max="3">
+        <label style="background-color:lightgray; padding: 1px;" for="BEServ">BE Status</label>
+        <br>
+        <input type = "range" id="BUServ" value = "3" min="1" max="3">
+        <label style="background-color:lightgray; padding: 1px;" for="BUServ">BU Status</label>
+        <br>
+
+        <input type = "range" id="BOServ" value = "3" min="1" max="3">
+        <label style="background-color:lightgray; padding: 1px;" for="BOServ">BOU Status</label>
+        <br>
+        <input type = "range" id="NTServ" value = "3" min="1" max="3">
+        <label style="background-color:lightgray; padding: 1px;" for="NTServ">NT Status</label>
+        <br>
+        <input type = "range" id="PRServ" value = "3" min="1" max="3">
+        <label style="background-color:lightgray; padding: 1px;" for="PRServ">PR Status</label>
+        <br>
+        <br>
+        <p>Decode:</p>
+                <span style="background-color: green;"> Green - fully serviceable send an receive</span>
+                <span style="background-color:orangered"> Amber - Limitations</span>
+                <span style="background-color:red"> Red - Unserviceable</span>
+        
+                <p style="margin-top: 30px;">Link State</p>
+            
+        
+                <input type = "range" id="N1Serv" value = "3" min="1" max="3">
+                <label style="background-color:lightgray; padding: 1px;" for="BUServ">Norway Nth Status</label>
+                <br>
+        
+                <input type = "range" id="N2Serv" value = "3" min="1" max="3">
+                <label style="background-color:lightgray; padding: 1px;" for="BOServ">Iceland Status</label>
+                <br>
+                <input type = "range" id="N3Serv" value = "3" min="1" max="3">
+                <label style="background-color:lightgray; padding: 1px;" for="NTServ">Norway Sth Status</label>
+                <br>
+                <input type = "range" id="N4Serv" value = "3" min="1" max="3">
+                <label style="background-color:lightgray; padding: 1px;" for="PRServ">Denmark Status</label>
+                <br>
+                <input type = "range" id="N5Serv" value = "3" min="1" max="3">
+                <label style="background-color:lightgray; padding: 1px;" for="PRServ">Netherlands Status</label>
+                <br>
+                <input type = "range" id="N6Serv" value = "3" min="1" max="3">
+                <label style="background-color:lightgray; padding: 1px;" for="PRServ">Belgium Status</label>
+                <br>
+                <input type = "range" id="SAServ" value = "3" min="1" max="3">
+                <label style="background-color:lightgray; padding: 1px;" for="PRServ">France Status</label>
+
+                <br>
+                <div id="text">
+
+                <textarea id="text">Notes on Linked sites:</textarea>
+
+    </div>
+</div>
+    <div style = "text-align: center;" class="float-child">
+        <canvas id="canvas" style="border: 1px solid" width="800" height = "900" ></canvas>
+    </div>
+
+    </head>
+    <body>
+
+    <script> console.log("hello World");
+
+        let canvas = document.getElementById("canvas");
+        let ctx = canvas.getContext("2d");
+        let outlineMap = new Image(500,500);
+        let radar = new Image(50,50);
+        radar.src = "radar.png";
+        let GrnArrow = new Image(80,80);
+        GrnArrow.src = "GrnArrow.png";
+        let AmbArrow = new Image(80,80);
+        AmbArrow.src = "AmbArrow.png";
+        let RedArrow = new Image(80,80);
+        RedArrow.src = "RedArrow.png";
+
+
+        const N1 = {
+            name: "NORWAY",
+            status: 3,
+            posX: 650,
+            posY: 50,
+            rotation: 6
+        }
+
+        const N2= {
+            name: "ICELAND",
+            status: 3,
+            posX: 180,
+            posY: 40,
+            rotation: 4.2
+        }
+
+        const N3 = {
+            name: "NORWAY (S)",
+            status: 3,
+            posX: 650,
+            posY: 150,
+            rotation: 6
+        }
+
+        const N4 = {
+            name: "DENMARK",
+            status: 3,
+            posX: 650,
+            posY: 400,
+            rotation: 0
+        }
+
+        const N5 = {
+            name: "NETHERLANDS",
+            status: 3,
+            posX: 650,
+            posY: 600,
+            rotation: 0
+        }
+
+        const S2 = {
+            name: "FRANCE",
+            status: 3,
+            posX: 500,
+            posY: 750,
+            rotation: 1.5
+        }
+
+
+        let links = [N1, N2, N3, N4, N5, S2];
+        
+        //original CSI Stuff
+        let xPos = 0;
+        let yPos =0;
+        let BUStatus = true;
+        let NTStatus = true;
+        let POStatus = true;
+        let BOUStatus = true;
+        let BEStatus = true;
+        outlineMap.src = 'UK.png';
+        const myInterval = setInterval(refresh, 500);
+
+        function refresh(){
+
+            let BUStatus = document.getElementById("BUServ").value;
+            let BOUStatus = document.getElementById("BOServ").value;
+            let NTStatus = document.getElementById("NTServ").value;
+            let POStatus = document.getElementById("PRServ").value;
+            let BEStatus = document.getElementById("BEServ").value;
+            N1.status = document.getElementById("N1Serv").value;
+            console.log(N1.status);
+            N2.status = document.getElementById("N2Serv").value;
+            N3.status = document.getElementById("N3Serv").value;
+            N4.status = document.getElementById("N4Serv").value;
+            N5.status = document.getElementById("N5Serv").value;
+            S2.status = document.getElementById("SAServ").value;
+          
+            ctx.clearRect(0,0,800,800);
+            ctx.fillStyle = 'rgba(200, 20, 20, 0.3)'
+            ctx.strokeStyle = 'rgb(200, 20, 20)'
+            ctx.drawImage(outlineMap, 100, 100);
+
+            //BU
+            ctx.drawImage(radar, 370, 260);
+
+            //NT
+            ctx.drawImage(radar, 475, 524);
+
+            //PO
+            ctx.drawImage(radar, 257, 661);
+
+            //BR
+            ctx.drawImage(radar, 410, 430);
+
+            //BE
+            ctx.drawImage(radar, 220, 251);
+
+            // draws the 323 Danger Area Complex.
+            ctx.beginPath();
+            ctx.moveTo(425, 450);
+            ctx.lineTo(476, 525);
+            ctx.lineTo(520, 533);
+            ctx.lineTo(555, 513);
+            ctx.lineTo(556, 490);
+            ctx.lineTo(477, 437);
+            
+            ctx.closePath();
+            ctx.stroke();
+            ctx.fill()
+
+            ctx.beginPath();
+            ctx.moveTo(447, 277);
+            ctx.lineTo(390, 289);
+            ctx.lineTo(393, 355);
+            ctx.lineTo(408, 363);
+            ctx.lineTo(475, 355);
+           
+            
+            ctx.closePath();
+            ctx.stroke();
+            ctx.fill()
+
+
+
+            if (BUStatus == 3){
+                ctx.fillStyle = 'rgba(20, 200, 20, 0.3)'
+            ctx.strokeStyle = 'rgb(20, 200, 20)'
+                ctx.beginPath();
+                ctx.arc(385, 275, 120, 0, 2 * Math.PI);
+                ctx.fill();
+                ctx.stroke();
+            }
+
+            if (BUStatus == 2){
+                ctx.fillStyle = 'rgba(255, 165, 20, 0.3)'
+                ctx.strokeStyle = 'rgb(255, 165, 20)'
+                ctx.beginPath();
+                ctx.arc(385, 275, 120, 0, 2 * Math.PI);
+                ctx.fill();
+                ctx.stroke();
+            }
+            
+
+            if (BOUStatus == 3){
+                ctx.fillStyle = 'rgba(20, 200, 20, 0.3)'
+            ctx.strokeStyle = 'rgb(20, 200, 20)'
+                ctx.beginPath();
+                ctx.arc(425, 445, 120, 0, 2 * Math.PI);
+                ctx.fill();
+                ctx.stroke();
+            }
+
+            if (BOUStatus == 2){
+                ctx.fillStyle = 'rgba(255, 165, 20, 0.3)'
+                ctx.strokeStyle = 'rgb(255, 165, 20)'
+                ctx.beginPath();
+                ctx.arc(425, 445, 120, 0, 2 * Math.PI);
+                ctx.fill();
+                ctx.stroke();
+            }
+
+            if (NTStatus == 2){
+                ctx.fillStyle = 'rgba(255, 165, 20, 0.3)'
+                ctx.strokeStyle = 'rgb(255, 165, 20)'
+                ctx.beginPath();
+                ctx.arc(490, 539, 120, 0, 2 * Math.PI);
+                ctx.fill();
+                ctx.stroke();
+            }
+
+            if (NTStatus == 3){
+                ctx.fillStyle = 'rgba(20, 200, 20, 0.3)'
+            ctx.strokeStyle = 'rgb(20, 200, 20)'
+                ctx.beginPath();
+                ctx.arc(490, 539, 120, 0, 2 * Math.PI);
+                ctx.fill();
+                ctx.stroke();
+            }
+
+            if (POStatus == 3){
+                ctx.fillStyle = 'rgba(20, 200, 20, 0.3)'
+            ctx.strokeStyle = 'rgb(20, 200, 20)'
+                ctx.beginPath();
+                ctx.arc(272, 676, 120, 0, 2 * Math.PI);
+                ctx.fill();
+                ctx.stroke();
+            }
+
+            if (POStatus == 2){
+                ctx.fillStyle = 'rgba(255, 165, 20, 0.3)'
+                ctx.strokeStyle = 'rgb(255, 165, 20)'
+                ctx.beginPath();
+                ctx.arc(272, 676, 120, 0, 2 * Math.PI);
+                ctx.fill();
+                ctx.stroke();
+            }
+
+            if (BEStatus == 3){
+                ctx.fillStyle = 'rgba(20, 200, 20, 0.3)'
+            ctx.strokeStyle = 'rgb(20, 200, 20)'
+                ctx.beginPath();
+                ctx.arc(230, 261, 120, 0, 2 * Math.PI);
+                ctx.fill();
+                ctx.stroke();
+            }
+
+            if (BEStatus == 2){
+                ctx.fillStyle = 'rgba(255, 165, 20, 0.3)'
+                ctx.strokeStyle = 'rgb(255, 165, 20)'
+                ctx.beginPath();
+                ctx.arc(230, 261, 120, 0, 2 * Math.PI);
+                ctx.fill();
+                ctx.stroke();
+            }
+
+            links.forEach(drawLink);
+
+           
+            
+        }
+
+        function BUPress(){
+            console.log("BU PRESSED");
+            if (BUStatus == true){
+                BUStatus = false;
+            }
+            else{
+                BUStatus = true;
+            }
+        }
+
+        function NTPress(){
+            console.log("NT PRESSED");
+            if (NTStatus == true){
+                NTStatus = false;
+            }
+            else{
+                NTStatus = true;
+            }
+        }
+
+       function POPress(){
+            console.log("PO PRESSED");
+            if (POStatus == true){
+                POStatus = false;
+            }
+            else{
+                POStatus = true;
+            }
+        }
+
+        function BRPress(){
+            console.log("BR PRESSED");
+            if (BRStatus == true){
+                BRStatus = false;
+            }
+            else{
+                BRStatus = true;
+            }
+        }
+
+        function BEPress(){
+            console.log("BR PRESSED");
+            if (BEStatus == true){
+                BEStatus = false;
+            }
+            else{
+                BEStatus = true;
+            }
+        }
+
+        //this little darling draws all the link serviceability arrows.
+        function drawLink (object){
+                
+                
+                ctx.fillStyle = 'rgb(240, 100, 100)'
+                ctx.strokeStyle = 'rgb(240, 240, 240)'
+           
+           
+            ctx.font = "bold 15px Arial";
+            console.log("drawing " + object.name);
+            ctx.fillText(object.name, object.posX, object.posY);
+            
+            
+            ctx.save();
+            ctx.translate(object.posX + 40, object.posY + 40)
+            ctx.rotate(object.rotation);
+            if(object.status == 3){
+            ctx.drawImage(GrnArrow, -40, -40);
+            }
+
+            else if (object.status == 2){
+                ctx.drawImage(AmbArrow, -40, -40)
+            }
+
+            else if (object.status == 1){
+                ctx.drawImage(RedArrow, -40, -40)
+            }
+            ctx.restore();
+
+            
+        }
+
+        
+
+        canvas.addEventListener('mousemove', (event) => {
+
+xPos = event.clientX -535;
+yPos = event.clientY -190;
+
+});
+
+canvas.addEventListener('click', (event) =>{
+
+
+console.log((xPos-215) + "," + (yPos -60));
+});
+        
+
+    </script>
+
+
+    
+    <!--- The map is approx 900nm tall and 1000nm wide-->
+    </body>
+
+    
+</html>
